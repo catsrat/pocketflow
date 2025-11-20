@@ -1,0 +1,3 @@
+# fastlane Appfile
+app_identifier("com.example.pocketflow") # Replace with your bundle id
+apple_id("your-apple-id@example.com") # Replace with Apple ID

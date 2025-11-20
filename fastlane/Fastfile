@@ -1,0 +1,24 @@
+default_platform(:ios)
+
+platform :ios do
+  desc "Push a new beta build to TestFlight"
+  lane :beta do
+    build_app(scheme: "Runner")
+    upload_to_testflight
+  end
+
+  desc "Release to App Store"
+  lane :release do
+    capture_screenshots
+    build_app(scheme: "Runner")
+    upload_to_app_store
+  end
+end
+
+platform :android do
+  desc "Assemble and publish to Play Store (placeholder)"
+  lane :publish do
+    sh "./gradlew bundleRelease"
+    # Supply upload_to_play_store steps or use supply action with JSON key
+  end
+end
