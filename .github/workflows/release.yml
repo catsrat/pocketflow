@@ -43,9 +43,14 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: subosito/flutter-action@v2
-        with:
-          flutter-version: stable
+      - name: Set up Flutter
+  uses: subosito/flutter-action@v2
+  with:
+    flutter-version: stable        # or specify a concrete version like "3.10.5"
+    channel: stable               # optional (keeps explicit)
+    cache: true                   # optional, speeds up builds
+with:
+      flutter-version: stable
       - name: Install deps
         run: flutter pub get
       - name: Build iOS (no codesign)
